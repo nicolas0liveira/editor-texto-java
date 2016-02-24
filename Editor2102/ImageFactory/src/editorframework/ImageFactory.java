@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classes;
+package editorframework;
 
 import editorframework.interfaces.Editor;
 import editorframework.interfaces.IAbstractFactory;
@@ -66,7 +66,5 @@ public class ImageFactory implements IAbstractFactory{
     public IVerifier createVerifier() {
         return new ImageVerifier();
     }
-    
-    
     
 }

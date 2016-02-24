@@ -40,7 +40,6 @@ public class Core implements ICore {
         return pluginController;
     }
     
-  
 }
 
 /*2013116038

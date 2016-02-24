@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package editorframework;
+package editorframework.util;
 
 import java.io.File;
 

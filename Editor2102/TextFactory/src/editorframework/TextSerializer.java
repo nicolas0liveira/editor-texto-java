@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classes;
+package editorframework;
 
 import editorframework.interfaces.IDocument;
 import editorframework.interfaces.ISerializer;
@@ -16,7 +16,9 @@ public class TextSerializer implements ISerializer{
 
     @Override
     public IDocument openDocument(String fileName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        IDocument document = new TextDocument();
+        document.open(fileName);
+        return document;
     }
     
 }

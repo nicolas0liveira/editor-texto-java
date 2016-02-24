@@ -1,4 +1,4 @@
-package classes;
+package editorframework;
 
 import editorframework.interfaces.Editor;
 import editorframework.interfaces.IAbstractFactory;

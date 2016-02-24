@@ -5,11 +5,13 @@
  */
 package editorframework;
 
+import editorframework.util.FilenameUtils;
 import editorframework.interfaces.IAbstractFactory;
 import editorframework.interfaces.ICore;
 import editorframework.interfaces.Editor;
 import editorframework.interfaces.IPlugin;
 import editorframework.interfaces.IUIController;
+import editorframework.util.FileChooserUtil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -78,7 +80,73 @@ public class UIController implements IUIController, ActionListener {
     */
     @Override
     public void fileOpenPerformed(ActionEvent e) {
-//        Stack<String> suportedExtensionsStk = new Stack<>();
+
+/*
+//cria o FileChooser
+                    JFileChooser jFileChooser = new JFileChooser();
+                    jFileChooser.setAcceptAllFileFilterUsed(false);
+                    jFileChooser.setFileHidingEnabled(false);
+
+                    //pega a lista de plugins carregados e cria um array para armazenar extensões
+                    ArrayList<String> supportedExtensions = new ArrayList<>();
+                    loadedPlugins = core.getPluginController().loadedPlugins();
+                    
+                    // Verifica se existem plugins de fabrica na lista de plugins e adiciona as extensões a lista
+                    for (IPlugin plugin : loadedPlugins) {
+                        if (plugin instanceof IAbstractFactory) {
+                            ArrayList<String> supportedExtensionsTmp = ((IAbstractFactory) plugin).supportedExtensions();
+                            if (supportedExtensionsTmp != null) {
+
+                                for (String extension : supportedExtensionsTmp) {
+                                    supportedExtensions.add(extension);
+                                    jFileChooser.addChoosableFileFilter(new FileNameExtensionFilter(extension, extension));
+                                }
+                            }
+                            
+                        }
+                    }
+                    
+                    //Caso não sejam localizados plugins de fabrica, avisa ao usuário
+                    if(supportedExtensions.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Nao existem plugins de fabrica instalados");
+                    }
+                    
+                    //coloca a lista de extensões disponíveis
+                    jFileChooser.setFileFilter(new FileNameExtensionFilter("All supported extensions", supportedExtensions.toArray(new String[supportedExtensions.size()])));
+                    int option = jFileChooser.showOpenDialog(mainFrame);
+                    if (option == JFileChooser.APPROVE_OPTION) {
+                        File selectedFile = jFileChooser.getSelectedFile();
+                        String nameSelectedFile = selectedFile.getAbsolutePath();
+                                                
+                        for (IPlugin plugin : loadedPlugins) {
+                            if (plugin instanceof IAbstractFactory) {
+                                ArrayList<String> supportedExtensionsTmp = ((IAbstractFactory) plugin).supportedExtensions();
+                                if (supportedExtensionsTmp != null) {
+
+                                    for (String extension : supportedExtensionsTmp) {
+                                        if (nameSelectedFile.endsWith(extension)) {
+                                            Editor editor = ((IAbstractFactory) plugin).createEditor();
+                                            ISerializer serializer = ((IAbstractFactory) plugin).createSerializer();
+                                            //IToolbox toolbox = ((IAbstractFactory) plugin).createToolbox();
+                                            //IVerifier verifier = ((IAbstractFactory) plugin).createVerifier();
+
+                                            JOptionPane.showMessageDialog(null, "Extensão " + extension + " aberta pelo plugin " + plugin.getClass().getSimpleName());
+                                            IDocumentController documentController = core.getDocumentController();
+                                            documentController.setSerializer(serializer);
+                                            IDocument document = documentController.openDocument(nameSelectedFile);
+                                            editor.setDocument(document);
+                                            setEditor(editor);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+*/
+
+
+
+	// Stack<String> suportedExtensionsStk = new Stack<>();
         Map<String,IPlugin> suportedExtensionsMap = new HashMap<>();
         
     //5.1) Invocar o pluginController para obter todos os plugins 
@@ -107,10 +175,10 @@ public class UIController implements IUIController, ActionListener {
     //5.4) Abrir a tela de File->Open com um filtro mostrando apenas as extensões suportadas pelos plugins.
         File file;    
         if(suportedExtensionsMap.isEmpty()){
-            file  = mainFrame.chooseFile();
+            file  = FileChooserUtil.chooseFile(mainFrame);
         } else {
             System.out.println(suportedExtensionsMap.keySet());
-            file = mainFrame.chooseFile(getSupportedFileNameExtensionFilters(suportedExtensionsMap));
+            file = FileChooserUtil.chooseFile(mainFrame, getSupportedFileNameExtensionFilters(suportedExtensionsMap));
         }
        
         if(file == null) return;

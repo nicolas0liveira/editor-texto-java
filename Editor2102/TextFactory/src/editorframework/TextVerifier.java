@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classes;
+package editorframework;
 
-import editorframework.interfaces.IToolbox;
+import editorframework.interfaces.IVerifier;
 
 /**
  *
  * @author MATHEUS
  */
-public class ImageToolbox implements IToolbox{
+public class TextVerifier implements IVerifier{
     
 }

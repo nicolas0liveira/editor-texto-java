@@ -2,20 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/prototypes/VerifierPrototype.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/editorframework/interfaces/IToolbox.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/editorframework/interfaces/IAbstractFactory.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/editorframework/interfaces/ISerializer.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/editorframework/interfaces/IDocumentController.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/editorframework/interfaces/IPlugin.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/editorframework/interfaces/IEditor.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/prototypes/ToolboxPrototype.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/editorframework/interfaces/IPluginController.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/editorframework/interfaces/IVerifier.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/editorframework/interfaces/ICore.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/prototypes/SerializerPrototype.java</file>
-            <file>file:/C:/Users/MATHEUS/Documents/NetBeansProjects/EditorFrameworkInterfaces/src/prototypes/EditorPrototype.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

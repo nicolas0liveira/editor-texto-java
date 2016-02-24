@@ -16,3 +16,7 @@ hs_err_pid*
 /Editor2102/PluginTexto/nbproject/private/
 /Editor2102/PluginTexto/build/
 /Editor2102/PluginTexto/dist/
+/Editor2102/EditorFramework/dist/
+/Editor2102/ImageFactory/build/
+/Editor2102/ImageFactory/dist/
+/Editor2102/TextFactory/dist/

@@ -5,11 +5,6 @@
  */
 package editorframework;
 
-import java.io.File;
-import java.util.List;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 /**
  *
  * @author aluno
@@ -21,55 +16,9 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         setUpLookAndFeel();
-        initComponents();       
+        initComponents();
     }
-    
-    
-    
-     /**
-     * Shows the file chooser
-     * @return a selected file
-     */
-    public File chooseFile() {
-        JFileChooser chooser = new JFileChooser();
-        int returnVal = chooser.showOpenDialog(this);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            return chooser.getSelectedFile();
-        }
-        return null;
-    }
-    /**
-     * Shows the file chooser
-     * @param filters
-     * @return a selected file
-     */
-    public File chooseFile(FileNameExtensionFilter... filters) {
-        JFileChooser chooser = new JFileChooser();
-        for (FileNameExtensionFilter filter : filters) {
-            chooser.addChoosableFileFilter(filter);
-        }
 
-        int returnVal = chooser.showOpenDialog(this);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            return chooser.getSelectedFile();
-        }
-        return null;
-    }
-    
-    public File chooseFile(List<FileNameExtensionFilter> filters) {
-        JFileChooser chooser = new JFileChooser();
-        for (FileNameExtensionFilter filter : filters) {
-            chooser.addChoosableFileFilter(filter);
-        }
-
-        int returnVal = chooser.showOpenDialog(this);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            return chooser.getSelectedFile();
-        }
-        return null;
-    }
-    
-   
     private void setUpLookAndFeel(){
           /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -105,24 +54,16 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenuBar();
+        menu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Editor");
 
-        jMenu1.setText("File");
+        menu.setText("File");
+        menuBar.add(menu);
 
-        jMenuItem1.setText("Open");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Save");
-        jMenu1.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,19 +79,9 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     * @throws java.lang.Exception
-     */
-    public static void main(String args[]) throws Exception {
-       new Core();
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu menu;
+    private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 }
    

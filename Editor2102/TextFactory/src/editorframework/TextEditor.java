@@ -3,24 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classes;
+package editorframework;
 
 import editorframework.interfaces.Editor;
 import javax.swing.JComponent;
+import javax.swing.JTextArea;
 
 /**
  *
  * @author MATHEUS
  */
-public class ImageEditor extends Editor {
+public class TextEditor extends Editor{
 
     @Override
-    public JComponent getView() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        public JComponent getView() {
+        JTextArea textArea = new JTextArea();
+        for(String line : ((TextDocument)document).getData())
+            textArea.append(line + '\n');
+        return textArea;
     }
-    
-    
-    
- 
     
 }

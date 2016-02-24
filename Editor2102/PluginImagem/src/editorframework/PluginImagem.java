@@ -8,7 +8,6 @@ package editorframework;
 import editorframework.interfaces.Editor;
 import editorframework.interfaces.IAbstractFactory;
 import editorframework.interfaces.ICore;
-import editorframework.interfaces.IEditor;
 import editorframework.interfaces.IPlugin;
 import editorframework.interfaces.ISerializer;
 import editorframework.interfaces.IToolbox;
@@ -24,16 +23,15 @@ public class PluginImagem implements IPlugin, IAbstractFactory {
 
     @Override
     public boolean initialize(ICore core) {
-        JMenuItem newItem = core.getUIController().addMenuItem("File", "Imagem");
+        JMenuItem newItem = core.getUIController().addMenuItem("Help", "About PluginImagem");
         if (newItem != null) {
             newItem.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    System.out.println("Voce clicou em File->Quit");
+                    System.out.println(getPluginName());
                 }
             });
         }
 
-        core.getUIController().addMenuItem("Help", "About Plugin Imagem");
         return true;
     }
 
