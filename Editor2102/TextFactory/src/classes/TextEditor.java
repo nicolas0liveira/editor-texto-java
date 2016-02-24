@@ -5,17 +5,19 @@
  */
 package classes;
 
+import editorframework.interfaces.Editor;
 import editorframework.interfaces.IEditor;
+import javax.swing.JComponent;
 
 /**
  *
  * @author MATHEUS
  */
-public class TextEditor implements IEditor{
+public class TextEditor extends Editor{
 
     @Override
-    public void exibirInfo() {
-        System.out.println("Text Editor");
+    public JComponent getView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

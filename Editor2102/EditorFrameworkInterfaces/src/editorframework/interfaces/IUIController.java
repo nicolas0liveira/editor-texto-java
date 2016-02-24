@@ -13,11 +13,12 @@ import javax.swing.JMenuItem;
  * @author aluno
  */
 public interface IUIController {
-    JMenuItem addMenuItem(String menu, String menuItem);
+    public JMenuItem addMenuItem(String menu, String menuItem);
+	public void setEditor(Editor editor);
 
     /**
      *
      * @param e
      */
-    void btnOpenPerformed(ActionEvent e); 
+    void fileOpenPerformed(ActionEvent e); 
 }

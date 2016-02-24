@@ -10,5 +10,6 @@ package editorframework.interfaces;
  * @author aluno
  */
 public interface IDocumentController {
-    
+    public void setSerializer(ISerializer serializer);
+    public IDocument openDocument(String fileName);
 }

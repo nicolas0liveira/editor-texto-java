@@ -5,6 +5,7 @@
  */
 package editorframework;
 
+import editorframework.interfaces.Editor;
 import editorframework.interfaces.IAbstractFactory;
 import editorframework.interfaces.ICore;
 import editorframework.interfaces.IEditor;
@@ -19,32 +20,38 @@ import javax.swing.JMenuItem;
  *
  * @author aluno
  */
-public class TestPluginTexto implements IPlugin, IAbstractFactory{
+public class PluginImagem implements IPlugin, IAbstractFactory {
 
     @Override
     public boolean initialize(ICore core) {
-        JMenuItem newItem = core.getUIController().addMenuItem("File", "Texto");
-        if (newItem != null)
+        JMenuItem newItem = core.getUIController().addMenuItem("File", "Imagem");
+        if (newItem != null) {
             newItem.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    System.out.println("Voce clicou em File->Texto");
+                    System.out.println("Voce clicou em File->Quit");
                 }
             });
+        }
 
-        core.getUIController().addMenuItem("Help", "About");
-        System.out.println(core.getUIController().addMenuItem("Help", "About Plugin Texto"));        
+        core.getUIController().addMenuItem("Help", "About Plugin Imagem");
         return true;
     }
 
     @Override
     public ArrayList<String> supportedExtensions() {
-        ArrayList<String>  a = new ArrayList<String> ();
-        a.add("txt");
-      return a;
+        ArrayList<String> a = new ArrayList<>();
+        a.add("jpeg");
+        a.add("png");
+        return a;
     }
 
     @Override
-    public IEditor createEditor() {
+    public String getPluginName(){
+        return "{[PluginImagem],[v1.0.0]}";
+    }
+    
+    @Override
+    public Editor createEditor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -62,5 +69,5 @@ public class TestPluginTexto implements IPlugin, IAbstractFactory{
     public IVerifier createVerifier() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

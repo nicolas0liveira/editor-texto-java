@@ -5,10 +5,14 @@
  */
 package editorframework.interfaces;
 
+import javax.swing.JComponent;
+
 /**
  *
  * @author MATHEUS
  */
 public interface IEditor {
-    public void exibirInfo();
+    public abstract JComponent getView();
+    public void setDocument(IDocument document);
+    
 }

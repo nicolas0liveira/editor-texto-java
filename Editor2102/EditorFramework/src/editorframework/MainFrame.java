@@ -6,7 +6,6 @@
 package editorframework;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -16,6 +15,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author aluno
  */
 public class MainFrame extends javax.swing.JFrame {
+
     /**
      * Creates new form MainFrame
      */
@@ -40,7 +40,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
     /**
      * Shows the file chooser
-     * @param FileNameExtensionFilter
+     * @param filters
      * @return a selected file
      */
     public File chooseFile(FileNameExtensionFilter... filters) {
@@ -69,6 +69,7 @@ public class MainFrame extends javax.swing.JFrame {
         return null;
     }
     
+   
     private void setUpLookAndFeel(){
           /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -108,7 +109,6 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,9 +121,6 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -151,9 +148,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
+   

@@ -7,8 +7,10 @@ package editorframework.interfaces;
 
 /**
  *
- * @author Márcio
+ * @author aluno
  */
-public interface IToolbox {
-    
+public interface IDocument {
+    public abstract boolean open(String fileName);
+    public abstract boolean close();
+    public abstract boolean save();
 }

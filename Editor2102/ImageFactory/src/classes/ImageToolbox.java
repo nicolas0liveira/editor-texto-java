@@ -12,10 +12,5 @@ import editorframework.interfaces.IToolbox;
  * @author MATHEUS
  */
 public class ImageToolbox implements IToolbox{
-
-    @Override
-    public void exibirInfo() {
-        System.out.println("Image ToolBox");
-    }
     
 }

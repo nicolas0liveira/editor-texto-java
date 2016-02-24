@@ -5,6 +5,7 @@
  */
 package classes;
 
+import editorframework.interfaces.IDocument;
 import editorframework.interfaces.ISerializer;
 
 /**
@@ -12,10 +13,9 @@ import editorframework.interfaces.ISerializer;
  * @author MATHEUS
  */
 public class ImageSerializer implements ISerializer{
-
     @Override
-    public void exibirInfo() {
-        System.out.println("Image Serializer");
+    public IDocument openDocument(String fileName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

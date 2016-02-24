@@ -7,11 +7,8 @@ package editorframework.interfaces;
 
 /**
  *
- * @author MATHEUS
+ * @author Márcio
  */
 public interface ISerializer {
-    
-    public void exibirInfo();
-    
-    
+    public IDocument openDocument(String fileName);
 }

@@ -11,4 +11,9 @@ package editorframework.interfaces;
  */
 public interface IPlugin {
     boolean initialize(ICore core);
+    String getPluginName();
+    
+    //@Override
+    //String toString();
 }
+

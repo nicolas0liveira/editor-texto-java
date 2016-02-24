@@ -1,5 +1,6 @@
 package classes;
 
+import editorframework.interfaces.Editor;
 import editorframework.interfaces.IAbstractFactory;
 import editorframework.interfaces.IEditor;
 import editorframework.interfaces.ISerializer;
@@ -39,7 +40,7 @@ public class TextFactory implements IAbstractFactory{
     }
 
     @Override
-    public IEditor createEditor() {
+    public Editor createEditor() {
         return new TextEditor();
     }
 

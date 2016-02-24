@@ -7,6 +7,7 @@ package editorframework;
 
 import editorframework.interfaces.IAbstractFactory;
 import editorframework.interfaces.ICore;
+import editorframework.interfaces.Editor;
 import editorframework.interfaces.IPlugin;
 import editorframework.interfaces.IUIController;
 import java.awt.event.ActionEvent;
@@ -17,10 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Stack;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
+import javax.swing.JComponent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -32,15 +30,17 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class UIController implements IUIController, ActionListener {
 
-    private MainFrame mainFrame;
     private ICore core;
-    private JMenuItem btnOpen;
-            
+    private MainFrame mainFrame;
+    private JMenuItem fileOpen;
+
+
     public UIController(ICore core) {
-        (mainFrame = new MainFrame()).setVisible(true);
         this.core = core;
-        btnOpen = addMenuItem("File", "Open");
-        btnOpen.addActionListener(this);
+        mainFrame = new MainFrame();
+        mainFrame.setVisible(true);
+        initComponents();
+        configEvents();
     }
     
     @Override
@@ -48,29 +48,36 @@ public class UIController implements IUIController, ActionListener {
         JMenuBar menuBar = mainFrame.getJMenuBar();
         int menuCount = menuBar.getMenuCount();
         JMenu targetMenu = null;
-        for (int i = 0; i < menuCount; i++) {
-            if (menuBar.getMenu(i).getText().equals(menu)) {
+        for (int i = 0; i < menuCount; i++)
+            if (menuBar.getMenu(i).getText().equals(menu))
                 targetMenu = menuBar.getMenu(i);
-            }
-        }
         if (targetMenu == null) {
             targetMenu = new JMenu(menu);
             menuBar.add(targetMenu);
         }
         int itemCount = targetMenu.getItemCount();
-        for (int i = 0; i < itemCount; i++) {
-            if (targetMenu.getItem(i).getText().equals(menuItem)) {
-                return targetMenu.getItem(i);
-            }
-        }
+        for (int i = 0; i < itemCount; i++)
+            if (targetMenu.getItem(i).getText().equals(menuItem))
+                return targetMenu;
         JMenuItem targetMenuItem = new JMenuItem(menuItem);
         targetMenu.add(targetMenuItem);
         return targetMenuItem;
     }
 
+
+    private void initComponents(){  
+        fileOpen = addMenuItem("File", "Open");
+    }
+    
+    private void configEvents(){ 
+        fileOpen.addActionListener(this);
+     }
+
+    /**
+    * Trata os eventos para o botão File -> Open
+    */
     @Override
-    public void btnOpenPerformed(ActionEvent e) {
-        System.out.println("Cliquei em Open");
+    public void fileOpenPerformed(ActionEvent e) {
 //        Stack<String> suportedExtensionsStk = new Stack<>();
         Map<String,IPlugin> suportedExtensionsMap = new HashMap<>();
         
@@ -116,7 +123,13 @@ public class UIController implements IUIController, ActionListener {
     
     }
 
-    
+    @Override
+    public void setEditor(Editor editor) {
+        JComponent view = editor.getView();
+        mainFrame.getContentPane().add(view);
+        mainFrame.pack();
+    }
+
     
      private  List<FileNameExtensionFilter> getSupportedFileNameExtensionFilters(Map<String,IPlugin> supportedPluginsMap) {
         List<FileNameExtensionFilter> supportedExtensions = new ArrayList<>();
@@ -127,20 +140,17 @@ public class UIController implements IUIController, ActionListener {
             supportedExtensions.add(new FileNameExtensionFilter("Todos os Arquivos","*.*"));
         } else {
             for(String s : supportedExtensionsSet){
-// TODO: obter a descrição para o filtro de alguma das interfaces (IAbstractFactory)
+            // TODO: obter a descrição para o filtro de alguma das interfaces (IAbstractFactory)
                supportedExtensions.add(new FileNameExtensionFilter("Arquivos com extensão "+s,s));
             }
         }
 
         return supportedExtensions;
-    }
-
+    }    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-      if(e.getSource() == btnOpen)
-          btnOpenPerformed(e);
+      if(e.getSource() == fileOpen)
+          fileOpenPerformed(e);
     }
-
-    
-    
 }

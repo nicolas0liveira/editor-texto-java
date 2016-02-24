@@ -10,5 +10,4 @@ package editorframework.interfaces;
  * @author MATHEUS
  */
 public interface IVerifier {
-    public void exibirInfo();
 }

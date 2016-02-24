@@ -5,6 +5,7 @@
  */
 package classes;
 
+import editorframework.interfaces.Editor;
 import editorframework.interfaces.IAbstractFactory;
 import editorframework.interfaces.IEditor;
 import editorframework.interfaces.ISerializer;
@@ -38,16 +39,16 @@ public class ImageFactory implements IAbstractFactory{
     
     @Override
     public ArrayList<String> supportedExtensions() {
-        ArrayList<String> l = new ArrayList<>();  
-        l.add("jpg");
-        l.add("png");
-        l.add("gif");
+        ArrayList<String> imageExtensions = new ArrayList<>();  
+        imageExtensions.add("jpg");
+        imageExtensions.add("png");
+        imageExtensions.add("gif");
        
-        return l;
+        return imageExtensions;
     }
 
     @Override
-    public IEditor createEditor() {
+    public Editor createEditor() {
         return new ImageEditor();
     }
 

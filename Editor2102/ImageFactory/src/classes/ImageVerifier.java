@@ -12,10 +12,5 @@ import editorframework.interfaces.IVerifier;
  * @author MATHEUS
  */
 public class ImageVerifier implements IVerifier{
-
-    @Override
-    public void exibirInfo() {
-        System.out.println("Image Verifier");
-    }
     
 }

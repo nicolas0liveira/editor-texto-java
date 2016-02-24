@@ -13,12 +13,9 @@ import java.util.ArrayList;
  */
 public interface IAbstractFactory {
     ArrayList<String> supportedExtensions();
-    
-    public IEditor createEditor();
-    public ISerializer createSerializer();
-    public IToolbox createToolbox();
-    public IVerifier createVerifier();
-        
-    
-    
+    public abstract Editor createEditor();
+    public abstract ISerializer createSerializer();
+    public abstract IVerifier createVerifier();
+    public abstract IToolbox createToolbox();
+
 }

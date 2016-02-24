@@ -15,7 +15,10 @@ import editorframework.interfaces.IUIController;
  * @author aluno
  */
 public class Core implements ICore {
-    
+    private IUIController uiController;
+    private IDocumentController documentController;
+    private IPluginController pluginController;
+
     public Core() throws Exception {
         uiController = new UIController(this);
         documentController = new DocumentController();
@@ -37,11 +40,7 @@ public class Core implements ICore {
         return pluginController;
     }
     
-    
-    
-    private IUIController uiController;
-    private IDocumentController documentController;
-    private IPluginController pluginController;
+  
 }
 
 /*2013116038

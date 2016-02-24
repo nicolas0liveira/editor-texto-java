@@ -5,24 +5,34 @@
  */
 package editorframework;
 
-import com.sun.webkit.plugin.Plugin;
 import editorframework.interfaces.ICore;
 import editorframework.interfaces.IPlugin;
 import editorframework.interfaces.IPluginController;
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author aluno
  */
 public class PluginController implements IPluginController {
+
+    private ICore core;
+    private ArrayList<IPlugin> loadedPlugins = new ArrayList<>();
+
+    public PluginController(ICore core) throws MalformedURLException {
+        this.core = core;
+        loadPlugins();
+    }
     
-    ArrayList<IPlugin> plugins = new ArrayList<>();
-    
-    public PluginController(ICore core) throws Exception {
+    private void loadPlugins() throws MalformedURLException{
+
+        loadedPlugins.clear();
         // Encontra a pasta plugins
         File currentDir = new File("./plugins");
         // Obtem todos os arquivos dentro desta pasta
@@ -35,21 +45,31 @@ public class PluginController implements IPluginController {
         // Adiciona todos os jars (plugins) no CLASSPATH
         URLClassLoader ulc = new URLClassLoader(jars);
         // Loop para inicialicao dos plugins
-        for(int i = 0; i < plugins.length; i++) {
-            String pluginName = plugins[i].split("\\.")[0];
-            IPlugin plugin = (IPlugin) Class.forName("editorframework." + pluginName, true, ulc).newInstance();
-            plugin.initialize(core);
-            this.plugins.add((IPlugin) plugin);
+        IPlugin iplugin = null;
+        String pluginName;
+        for (String plugin : plugins) {
+            if (plugin.endsWith(".jar")) {
+                pluginName = plugin.split("\\.")[0];
+                try {
+                    iplugin = (IPlugin) Class.forName("editorframework." + pluginName, true, ulc).newInstance();
+                    loadedPlugins.add(iplugin);
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+                    Logger.getLogger(PluginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (iplugin != null)
+                    iplugin.initialize(core);
+            }
         }
-        
     }
 
     @Override
     public ArrayList<IPlugin> loadedPlugins() {
-        //Lembrar de remover esses plugins aqui. Só usei para testes
-        plugins.add(new TestPlugin());
-        plugins.add(new TestPluginTexto());
-        plugins.add(new TestPluginImagem());
-        return this.plugins;
+        System.out.println("[DEBUG]: Plugins Carregados: " + loadedPlugins);
+        try {
+            loadPlugins();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(PluginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return loadedPlugins;
     }
 }

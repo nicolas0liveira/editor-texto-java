@@ -5,10 +5,16 @@
  */
 package editorframework.interfaces;
 
+
 /**
  *
  * @author Márcio
  */
-public interface IToolbox {
+public abstract class Editor implements IEditor{
+    protected IDocument document;
+    
+    public void setDocument(IDocument document){
+        this.document = document;
+    }
     
 }

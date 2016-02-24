@@ -5,17 +5,18 @@
  */
 package classes;
 
-import editorframework.interfaces.IEditor;
+import editorframework.interfaces.Editor;
+import javax.swing.JComponent;
 
 /**
  *
  * @author MATHEUS
  */
-public class ImageEditor implements IEditor{
+public class ImageEditor extends Editor {
 
     @Override
-    public void exibirInfo() {
-        System.out.println("Image Editor");
+    public JComponent getView() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
     

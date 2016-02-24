@@ -14,5 +14,4 @@ import java.util.ArrayList;
 public interface IPluginController {
     
     ArrayList<IPlugin> loadedPlugins();
-    
 }
