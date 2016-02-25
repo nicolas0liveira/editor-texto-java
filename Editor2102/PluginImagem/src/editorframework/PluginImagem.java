@@ -12,22 +12,36 @@ import editorframework.interfaces.IPlugin;
 import editorframework.interfaces.ISerializer;
 import editorframework.interfaces.IToolbox;
 import editorframework.interfaces.IVerifier;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author aluno
  */
 public class PluginImagem implements IPlugin, IAbstractFactory {
-
+    static final long serialVersionUID = 1L;
+    
+//    private PluginImagem instance;
+//    
+//    private PluginImagem(){  }
+//    
+//    public PluginImagem getInstance(){
+//        if(instance == null)
+//            instance = new PluginImagem();
+//        return instance;
+//    }
+    
+    
     @Override
     public boolean initialize(ICore core) {
         JMenuItem newItem = core.getUIController().addMenuItem("Help", "About PluginImagem");
         if (newItem != null) {
             newItem.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    System.out.println(getPluginName());
+                    showMessage(getPluginInfo());
                 }
             });
         }
@@ -36,16 +50,13 @@ public class PluginImagem implements IPlugin, IAbstractFactory {
     }
 
     @Override
-    public ArrayList<String> supportedExtensions() {
-        ArrayList<String> a = new ArrayList<>();
-        a.add("jpeg");
-        a.add("png");
-        return a;
+    public List<String> supportedExtensions() {
+        return Arrays.asList("jpeg","png");
     }
 
     @Override
-    public String getPluginName(){
-        return "{[PluginImagem],[v1.0.0]}";
+    public String getPluginInfo(){
+        return "Plugin Imagem [version:"+serialVersionUID+"]";
     }
     
     @Override
@@ -68,4 +79,7 @@ public class PluginImagem implements IPlugin, IAbstractFactory {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    private void showMessage(String msg){
+        JOptionPane.showMessageDialog(null, msg);
+    }
 }

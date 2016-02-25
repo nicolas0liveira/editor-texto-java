@@ -36,7 +36,8 @@ public class PluginController implements IPluginController {
         // Encontra a pasta plugins
         File currentDir = new File("./plugins");
         // Obtem todos os arquivos dentro desta pasta
-        String []plugins = currentDir.list(new PluginFileNameFilter());
+        String[] plugins = currentDir.list(new PluginFileNameFilter());
+        if(plugins == null) return;
         // Criar um array de URL do mesmo tamanho do anterior
         URL[] jars = new URL[plugins.length];
         // Loop para popular o array jars

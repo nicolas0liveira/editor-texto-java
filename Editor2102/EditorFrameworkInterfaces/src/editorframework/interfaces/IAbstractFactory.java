@@ -5,17 +5,18 @@
  */
 package editorframework.interfaces;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author MATHEUS
  */
 public interface IAbstractFactory {
-    ArrayList<String> supportedExtensions();
+    public List<String> supportedExtensions();
     public abstract Editor createEditor();
     public abstract ISerializer createSerializer();
     public abstract IVerifier createVerifier();
     public abstract IToolbox createToolbox();
+//    public abstract IAbstractFactory getInstance();
 
 }
