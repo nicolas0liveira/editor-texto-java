@@ -14,7 +14,7 @@ import javax.swing.JMenuItem;
  */
 public interface IUIController {
     public JMenuItem addMenuItem(String menu, String menuItem);
-	public void setEditor(Editor editor);
+    public void setEditor(Editor editor);
 
     /**
      *
