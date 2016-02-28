@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
  *
  * @author MATHEUS
  */
-public class PDFEditor extends Editor{   
+public class ImageEditor extends Editor{   
 
     @Override
     public JComponent getView() {
@@ -24,7 +24,7 @@ public class PDFEditor extends Editor{
         JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         
-        ((PDFDocument)document).getData().stream().forEach((line) -> {
+        ((ImageDocument)document).getData().stream().forEach((line) -> {
             textArea.append(line + '\n');
         });
         return scrollPane;

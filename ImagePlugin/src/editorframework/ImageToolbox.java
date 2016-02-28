@@ -16,10 +16,10 @@ import javax.swing.JOptionPane;
  * @author MATHEUS
  */
 //TODO XXX: Implementar usando Bridge
-public class PDFToolbox implements IToolbox{
+public class ImageToolbox implements IToolbox{
     private IPlugin plugin;
  
-    public PDFToolbox(IPlugin plugin){
+    public ImageToolbox(IPlugin plugin){
         this.plugin = plugin;   
     }
 

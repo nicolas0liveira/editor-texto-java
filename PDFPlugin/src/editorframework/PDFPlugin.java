@@ -20,19 +20,19 @@ import javax.swing.JOptionPane;
  *
  * @author aluno
  */
-public class PDFPlugin implements IPlugin, IAbstractFactory{
+public class PDFPlugin implements IPlugin, IAbstractFactory {
     static final long serialVersionUID = 1L;
-    
-//    private PDFPlugin instance;
-//    
-//    private PDFPlugin(){  }
-//    
-//    public PDFPlugin getInstance(){
-//        if(instance == null)
-//            instance = new PDFPlugin();
-//        return instance;
-//    }
+
+    private static PDFPlugin instance;
     private ICore core;
+
+    private PDFPlugin(){ } 
+    
+    public static PDFPlugin getInstance(){
+        if(instance == null)
+            instance = new PDFPlugin(); 
+        return instance;
+    }
     
     
     @Override
@@ -58,7 +58,10 @@ public class PDFPlugin implements IPlugin, IAbstractFactory{
 
     @Override
     public IToolbox createToolbox() {
-        IToolbox toolbox = new PDFToolbox(this);    
+        //TODO: Ver a melhor forma de passar o IPlugin pro toolbox. 
+        //O IToolbox deve controlar toda a regra de seus próprios componentes? Ou o UIController deve possuir tal responsabilidade?  
+        IToolbox toolbox = new PDFToolbox(this);  
+        
         return toolbox;
     }
 

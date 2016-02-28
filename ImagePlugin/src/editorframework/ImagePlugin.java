@@ -20,27 +20,17 @@ import javax.swing.JOptionPane;
  *
  * @author aluno
  */
-public class TextPlugin implements IPlugin, IAbstractFactory {
+public class ImagePlugin implements IPlugin, IAbstractFactory {
     static final long serialVersionUID = 1L;
-    
-//     Abstract Factory como singleton, não entendi o que deveria ser singleton. 
-//     Se o plugin deveria possuir uma fábrica singleton, ou ele mesmo seria uma fábrica singleton, já que implementa IAbstractFactory??
-//     Implementei o plugin que contem uma fábrica singleton de componentes (deixei comentada) e implementei o singleton no proprio plugin
-//      uma vez que ele implementa IAbstractFactory
-    
 
-//TODO: Reavaliar a necessidade do DefaultTextFactory. Acho que ele pode ser removido sem problemas,...
-//A não ser que se deseje delegar a responsabilidade de criar os objetos para uma fábrica especializada, 
-//e o IPlugin trate de outras questões gerais e contenha uma fabrica que gera os componentes 
-    //(O lado bom dessa abordagem é que basta trocar a fabrica para mudar os componentes do plugin)
-//    private IAbstractFactory factory = DefaultTextFactory.getInstance();
-    
-    private static TextPlugin instance = new TextPlugin();
+    private static ImagePlugin instance;
     private ICore core;
 
-    private TextPlugin(){ } 
+    private ImagePlugin(){ } 
     
-    public static TextPlugin getInstance(){
+    public static ImagePlugin getInstance(){
+        if(instance == null)
+            instance = new ImagePlugin(); 
         return instance;
     }
     
@@ -53,36 +43,31 @@ public class TextPlugin implements IPlugin, IAbstractFactory {
 
     @Override
     public List<String> supportedExtensions() {
-//      return factory.supportedExtensions();
-      return Arrays.asList("txt");
+      return Arrays.asList("jpg","png");
     }
 
     @Override
     public Editor createEditor() {
-//        return factory.createEditor();
-        return new TextEditor();
+        return new ImageEditor();
     }
 
     @Override
     public ISerializer createSerializer(){
-//        return factory.createSerializer();
-        return new TextSerializer();
+        return new ImageSerializer();
     }
 
     @Override
     public IToolbox createToolbox() {
         //TODO: Ver a melhor forma de passar o IPlugin pro toolbox. 
         //O IToolbox deve controlar toda a regra de seus próprios componentes? Ou o UIController deve possuir tal responsabilidade?  
-        IToolbox toolbox = new TextToolbox(this);  
+        IToolbox toolbox = new ImageToolbox(this);  
         
-//        return factory.createToolbox();
         return toolbox;
     }
 
     @Override
     public IVerifier createVerifier() {
-//       return factory.createVerifier();
-       return new TextVerifier();
+       return new ImageVerifier();
     }
 
     @Override
@@ -97,7 +82,7 @@ public class TextPlugin implements IPlugin, IAbstractFactory {
 
     @Override
     public String getPluginName() {
-        return "TextPlugin";
+        return "ImagePlugin";
     }
 
     @Override
