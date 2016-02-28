@@ -58,3 +58,9 @@ Editor2102/EditorFramework/nbproject/private/private.xml
 /ImagePlugin/nbproject/private/
 /PDFPlugin/nbproject/private/
 /TextPlugin/nbproject/private/
+/EditorFrameworkInterfaces/dist/
+/PDFPlugin/build/
+/PDFPlugin/dist/
+/TextPlugin/build/
+/TextPlugin/dist/
+/EditorFramework/build/

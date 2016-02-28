@@ -16,10 +16,10 @@ import javax.swing.JOptionPane;
  * @author MATHEUS
  */
 //TODO XXX: Implementar usando Bridge
-public class TextToolbox implements IToolbox{
+public class PDFToolbox implements IToolbox{
     private IPlugin plugin;
  
-    public TextToolbox(IPlugin plugin){
+    public PDFToolbox(IPlugin plugin){
         this.plugin = plugin;   
     }
 
@@ -67,7 +67,7 @@ public class TextToolbox implements IToolbox{
         .append("\nPlugin Version: " + plugin.getPluginVersion());
          
          
-        JMenuItem itemAbout = plugin.getCore().getUIController().addMenuItem("Help", "About TextPlugin");
+        JMenuItem itemAbout = plugin.getCore().getUIController().addMenuItem("Help", "About PDFPlugin");
         if (itemAbout != null)
             itemAbout.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,11 +75,6 @@ public class TextToolbox implements IToolbox{
                 }
             });
 
-    }
-
-    @Override
-    public void setPlugin(IPlugin plugin) {
-        this.plugin = plugin;
     }
 }
 

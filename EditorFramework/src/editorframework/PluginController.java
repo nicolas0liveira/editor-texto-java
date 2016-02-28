@@ -9,6 +9,8 @@ import editorframework.interfaces.ICore;
 import editorframework.interfaces.IPlugin;
 import editorframework.interfaces.IPluginController;
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -51,11 +53,26 @@ public class PluginController implements IPluginController {
         for (String plugin : plugins) {
             if (plugin.endsWith(".jar")) {
                 pluginName = plugin.split("\\.")[0];
-                try {
-                    iplugin = (IPlugin) Class.forName("editorframework." + pluginName, true, ulc).newInstance();
+                try {              
+                    
+                    //alterei para chamar o método .getInstace() ao invés do construtor padrão.
+                    //Mas se o plugin não implementar esse método? Como testar uma vez que não da pra obrigar por meio da interface?
+                    //Optei pela seguinte estratégia: primeiro tenta o getInstance(). Caso não de certo, tenta o newInstance()
+                    Class c = Class.forName("editorframework." + pluginName, true, ulc);
+                    Method factoryMethod;
+                    factoryMethod = c.getDeclaredMethod("getInstance");
+                    iplugin = (IPlugin) factoryMethod.invoke(null);
+                    
                     loadedPlugins.add(iplugin);
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+                    
+                } catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException ex) {
                     Logger.getLogger(PluginController.class.getName()).log(Level.SEVERE, null, ex);
+                    try {
+                        iplugin = (IPlugin) Class.forName("editorframework." + pluginName, true, ulc).newInstance();
+                        loadedPlugins.add(iplugin);
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex2) {
+                        Logger.getLogger(PluginController.class.getName()).log(Level.SEVERE, null, ex2);
+                    }
                 }
                 if (iplugin != null)
                     iplugin.initialize(core);

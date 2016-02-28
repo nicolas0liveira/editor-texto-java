@@ -17,6 +17,5 @@ public interface IAbstractFactory {
     public abstract ISerializer createSerializer();
     public abstract IVerifier createVerifier();
     public abstract IToolbox createToolbox();
-//    public abstract IAbstractFactory getInstance();
 
 }

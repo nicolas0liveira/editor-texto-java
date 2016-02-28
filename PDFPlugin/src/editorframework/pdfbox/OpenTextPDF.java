@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package editorframework.PDF;
+package editorframework.pdfbox;
 
 /**
  *
@@ -20,7 +20,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
  * @author MATHEUS
  */
 
-public class OpenTextPDF{
+public class OpenTextPDF {
 
     public boolean openPDF(String pdfFilename) {
         //openPDF(fileName);

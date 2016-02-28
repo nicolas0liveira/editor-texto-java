@@ -11,4 +11,5 @@ package editorframework.interfaces;
  */
 public interface IToolbox {
     public IToolbox initialize();
+    public void setPlugin(IPlugin plugin);
 }

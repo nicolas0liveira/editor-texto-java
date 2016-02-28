@@ -20,26 +20,19 @@ import javax.swing.JOptionPane;
  *
  * @author aluno
  */
-public class TextPlugin implements IPlugin, IAbstractFactory {
+public class PDFPlugin implements IPlugin, IAbstractFactory{
     static final long serialVersionUID = 1L;
     
-//     Abstract Factory como singleton, não entendi o que deveria ser singleton. 
-//     Se o plugin deveria possuir uma fábrica singleton, ou ele mesmo seria uma fábrica singleton, já que implementa IAbstractFactory??
-//     Implementei o plugin que contem uma fábrica singleton de componentes (deixei comentada) e implementei o singleton no proprio plugin
-//      uma vez que ele implementa IAbstractFactory
-    //TODO: Reavaliar a necessidade do DefaultTextFactory. Acho que ele pode ser removido sem problemas...
-
-
-    
-//    private IAbstractFactory factory = DefaultTextFactory.getInstance();
-    private static TextPlugin instance = new TextPlugin();
+//    private PDFPlugin instance;
+//    
+//    private PDFPlugin(){  }
+//    
+//    public PDFPlugin getInstance(){
+//        if(instance == null)
+//            instance = new PDFPlugin();
+//        return instance;
+//    }
     private ICore core;
-
-    private TextPlugin(){ } 
-    
-    public static TextPlugin getInstance(){
-        return instance;
-    }
     
     
     @Override
@@ -50,36 +43,28 @@ public class TextPlugin implements IPlugin, IAbstractFactory {
 
     @Override
     public List<String> supportedExtensions() {
-//      return factory.supportedExtensions();
-      return Arrays.asList("txt");
+      return Arrays.asList("pdf");
     }
 
     @Override
     public Editor createEditor() {
-//        return factory.createEditor();
-        return new TextEditor();
+        return new PDFEditor();
     }
 
     @Override
     public ISerializer createSerializer(){
-//        return factory.createSerializer();
-        return new TextSerializer();
+        return new PDFSerializer();
     }
 
     @Override
     public IToolbox createToolbox() {
-        //TODO: Ver a melhor forma de passar o IPlugin pro toolbox. 
-        //O IToolbox deve controlar toda a regra de seus próprios componentes? Ou o UIController deve possuir tal responsabilidade?  
-        IToolbox toolbox = new TextToolbox(this);  
-        
-//        return factory.createToolbox();
+        IToolbox toolbox = new PDFToolbox(this);    
         return toolbox;
     }
 
     @Override
     public IVerifier createVerifier() {
-//       return factory.createVerifier();
-       return new TextVerifier();
+       return new PDFVerifier();
     }
 
     @Override
@@ -94,7 +79,7 @@ public class TextPlugin implements IPlugin, IAbstractFactory {
 
     @Override
     public String getPluginName() {
-        return "TextPlugin";
+        return "PDFPlugin";
     }
 
     @Override
