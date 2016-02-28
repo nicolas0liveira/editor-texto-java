@@ -27,11 +27,14 @@ public class TextPlugin implements IPlugin, IAbstractFactory {
 //     Se o plugin deveria possuir uma fábrica singleton, ou ele mesmo seria uma fábrica singleton, já que implementa IAbstractFactory??
 //     Implementei o plugin que contem uma fábrica singleton de componentes (deixei comentada) e implementei o singleton no proprio plugin
 //      uma vez que ele implementa IAbstractFactory
-    //TODO: Reavaliar a necessidade do DefaultTextFactory. Acho que ele pode ser removido sem problemas...
-
-
     
-//    private IAbstractFactory factory = DefaultTextFactory.getInstance();
+
+//TODO: Reavaliar a necessidade do DefaultTextFactory. Acho que ele pode ser removido sem problemas,...
+//A não ser que se deseje delegar a responsabilidade de criar os objetos para uma fábrica especializada, 
+//e o IPlugin trate de outras questões gerais e contenha uma fabrica que gera os componentes 
+    //(O lado bom dessa abordagem é que basta trocar a fabrica para mudar os componentes do plugin)
+    private IAbstractFactory factory = DefaultTextFactory.getInstance();
+    
     private static TextPlugin instance = new TextPlugin();
     private ICore core;
 
