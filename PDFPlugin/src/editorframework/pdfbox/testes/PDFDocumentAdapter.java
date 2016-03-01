@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package editorframework.pdfbox;
+package editorframework.pdfbox.testes;
 
 import editorframework.interfaces.IDocument;
 import editorframework.pdfbox.OpenTextPDF;

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.pdfbox.PDFReader;
 
 /**
  *
@@ -20,6 +21,9 @@ import java.util.logging.Logger;
  */
 public class PDFDocument implements IDocument {
 
+    //utilizar o adpter aqui!
+    
+    
     private String fileName;
     private List<String> data = new ArrayList<String>();
     
@@ -57,6 +61,7 @@ public class PDFDocument implements IDocument {
     public boolean save() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
     public List<String> getData() {
         return data;
     }

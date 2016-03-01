@@ -65,3 +65,6 @@ Editor2102/EditorFramework/nbproject/private/private.xml
 /TextPlugin/dist/
 /EditorFramework/build/
 /EditorFramework/dist/
+/EditorFrameworkInterfaces/build/
+/ImagePlugin/build
+/TextPlugin/build

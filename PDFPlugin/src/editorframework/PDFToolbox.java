@@ -26,8 +26,8 @@ public class PDFToolbox implements IToolbox{
     @Override
     public IToolbox initialize() { 
         buildSaveItem();
+        buildNextAndPreviewsItems();
         buildAboutItem();
-        buildCloseItem();
         return this;
     }
      
@@ -45,18 +45,32 @@ public class PDFToolbox implements IToolbox{
             });
     }
     
-    private void buildCloseItem(){
+    
+    private void buildNextAndPreviewsItems(){
         IDocumentController documentController = plugin.getCore().getDocumentController();
-        //monta menu Close
-        JMenuItem itemClose = plugin.getCore().getUIController().addMenuItem("Edit", "Close");
-        if (itemClose != null)
-            itemClose.addActionListener(new java.awt.event.ActionListener() {
+        
+        JMenuItem nextPageItem = plugin.getCore().getUIController().addMenuItem("Edit", "Next Page");
+        if (nextPageItem != null)
+            nextPageItem.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    JOptionPane.showMessageDialog(null, "Close function is not implemented yet");
-                    documentController.closeDocument();
+//                    documentController.closeDocument();
+                }
+            });
+        
+        
+        
+                
+        //monta menu Next Page
+        JMenuItem previousPageItem = plugin.getCore().getUIController().addMenuItem("Edit", "Previous Page");
+        if (nextPageItem != null)
+            nextPageItem.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                    documentController.closeDocument();
                 }
             });
     }
+    
+    
 
     private void buildAboutItem(){
          //monta menu About
@@ -67,7 +81,7 @@ public class PDFToolbox implements IToolbox{
         .append("\nPlugin Version: " + plugin.getPluginVersion());
          
          
-        JMenuItem itemAbout = plugin.getCore().getUIController().addMenuItem("Help", "About TextPlugin");
+        JMenuItem itemAbout = plugin.getCore().getUIController().addMenuItem("Help", "About PDFPlugin");
         if (itemAbout != null)
             itemAbout.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -6,9 +6,16 @@
 package editorframework;
 
 import editorframework.interfaces.Editor;
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 /**
  *
@@ -18,17 +25,28 @@ public class PDFEditor extends Editor{
 
     @Override
     public JComponent getView() {
-        JTextArea textArea = new JTextArea();
-        textArea.setEditable(true);
-
-        JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        JPanel documentPanel = new JPanel();
+        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        documentPanel.setBounds((screenSize.width-700)/2, (screenSize.height-600)/2, 700, 600);
         
-        ((PDFDocument)document).getData().stream().forEach((line) -> {
-            textArea.append(line + '\n');
-        });
-        return scrollPane;
+        JScrollPane documentScroller = new JScrollPane(documentPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        documentScroller.setViewportView( documentPanel );
+         
+        
+        ((PDFDocument)document).getData();
+        JLabel picLabel = new JLabel(new ImageIcon(bi));
+        
+//        InputStream in = new ByteArrayInputStream();
+//        BufferedImage bImageFromConvert = ImageIO.read(in);
+//        scrollPane.getViewport().add(picLabel);
+            
+       
+        return documentScroller;
     }
     
+//    private void updateTitle() {
+//        setTitle( "PDFBox - " + currentFilename + " ("+(currentPage+1)+"/"+numberOfPages+")");
+//    }
     
 }

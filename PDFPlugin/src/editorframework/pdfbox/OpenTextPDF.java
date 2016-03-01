@@ -22,15 +22,15 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 
 public class OpenTextPDF {
 
-    public boolean openPDF(String pdfFilename) {
+    public PDDocument openPDF(String pdfFilename) {
         //openPDF(fileName);
         PDDocument document = null;
         try {
             document = PDDocument.load(new File(pdfFilename));
-            return true;
+            return document;
         } catch (IOException ex) {
             Logger.getLogger(OpenTextPDFAdapter.class.getName()).log(Level.SEVERE, null, ex);
         }     
-        return false;
+        return null;
     }
 }
