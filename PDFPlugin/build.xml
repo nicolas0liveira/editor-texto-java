@@ -7,7 +7,7 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="EditorFramework" default="default" basedir=".">
+<project name="PDFPlugin" default="default" basedir=".">
     <description>Builds, tests, and runs the project EditorFramework.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
@@ -83,7 +83,7 @@
   
           
         <property name="store.jar.name" value="PDFPlugin"/>	
-        <property name="store.dir" value="./dist/out"/>
+        <property name="store.dir" value="./dist/completo"/>
         <property name="store.jar" value="${store.dir}/${store.jar.name}.jar"/>  
   
         <echo message="Packaging ${store.jar.name} into a single JAR at ${store.jar}"/>  
@@ -93,7 +93,7 @@
   
         <jar destfile="${store.dir}/temp_final.jar" filesetmanifest="skip">  
             <zipgroupfileset dir="dist" includes="*.jar"/>  
-            <zipgroupfileset dir="dist/lib" includes="*.jar"/>  
+            <zipgroupfileset dir="lib" includes="*.jar"/>  
   
             <manifest>  
                 <attribute name="Main-Class" value="${main.class}"/>                  

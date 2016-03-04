@@ -8,12 +8,9 @@ package editorframework;
 import editorframework.interfaces.IDocument;
 import editorframework.pdfbox.PDFBoxDocumentAdaptee;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
 
 /**
  *
