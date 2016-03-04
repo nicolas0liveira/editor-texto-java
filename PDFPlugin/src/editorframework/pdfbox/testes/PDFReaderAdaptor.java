@@ -16,6 +16,7 @@
  */
 package editorframework.pdfbox.testes;
 
+import editorframework.interfaces.IDocument;
 import org.apache.pdfbox.pdfviewer.PageWrapper;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -27,10 +28,11 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.pdfbox.PDFReader;
-import org.apache.pdfbox.pdfviewer.PDFPagePanel;
 
-public class PDFReaderAdaptor extends PDFReader {
+public class PDFReaderAdaptor extends PDFReader /*implements IDocument*/{
 
 
     private PDDocument document = null;
@@ -67,16 +69,7 @@ public class PDFReaderAdaptor extends PDFReader {
         return currentPage;
     }
 
-    private void close(){
-        try {
-            if( document != null ) {
-                document.close();
-            }
-        }
-        catch( IOException io ){
-            //do nothing because we are closing the application
-        }
-    }
+    
 
     private void openPDFFile(String file) throws Exception
     {
@@ -115,4 +108,26 @@ public class PDFReaderAdaptor extends PDFReader {
         return document;
     }
 
+//    @Override
+    public boolean open(String fileName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+//    @Override
+    public boolean save() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+//    @Override
+    public boolean close(){
+        try {
+            if( document != null ) {
+                document.close();
+            }
+        }
+        catch( IOException io ){
+             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, io);
+        }
+        return true;
+    }
 }

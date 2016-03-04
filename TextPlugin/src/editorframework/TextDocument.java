@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author aluno
  */
-public class TextDocument implements IDocument {
+public class TextDocument implements IDocument<List<String>> {
 
     private String fileName;
     private List<String> data = new ArrayList<String>();
@@ -57,6 +57,9 @@ public class TextDocument implements IDocument {
     public boolean save() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
+    @Override
     public List<String> getData() {
         return data;
     }

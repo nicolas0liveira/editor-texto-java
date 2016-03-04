@@ -5,12 +5,15 @@
  */
 package editorframework.interfaces;
 
+import java.io.Serializable;
+
 /**
  *
  * @author aluno
  */
-public interface IDocument {
+public interface IDocument<T> {
     public abstract boolean open(String fileName);
     public abstract boolean close();
     public abstract boolean save();
+    public abstract T getData();
 }

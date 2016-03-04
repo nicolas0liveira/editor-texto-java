@@ -5,6 +5,7 @@
  */
 package editorframework.pdfbox.testes;
 
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,7 +15,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import org.apache.pdfbox.PDFReader;
 import org.apache.pdfbox.pdfviewer.PDFPagePanel;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -24,6 +27,11 @@ import org.apache.pdfbox.pdmodel.PDPage;
  * @author MATHEUS
  */
 public class TestesComPDFBox {
+    
+    public static void testarPDFREaderDoPDFBox() throws IOException {
+        PDFReader reader = new PDFReader(); //o pdfbox já possui uma aplicação com interface. É bom que ajuda no entendimento de como o pdfbox funciona
+        reader.setVisible(true);
+    }
     
     public static void transformarPDFemImagem() throws IOException {
 
@@ -56,7 +64,7 @@ public class TestesComPDFBox {
         testFrame.setBounds(40, 40, pdfPanel.getWidth(), pdfPanel.getHeight());
         testFrame.setVisible(true);
         pdfPanel.validate();
-//        inputPDF.close(); //quando fecha não funciona! Nao entendi
+//        inputPDF.close();
        
     }
     
@@ -79,13 +87,15 @@ public class TestesComPDFBox {
         testFrame.pack();
 
     }
+     
      public static void main(String[] args) throws IOException {
 //        OpenTextPDF otp = new OpenTextPDF();
 //        System.out.print(otp.openPDF("./testfile.pdf"));
 
-//        exibirPDFEmUmJFrame(); //não fincionou
-//        transformarPDFemImagem(); //Deu certo
-        exibirPDFemImagemNoJComponent();
+//        exibirPDFEmUmJFrame();
+//        transformarPDFemImagem(); 
+//        exibirPDFemImagemNoJComponent();
+        testarPDFREaderDoPDFBox();
 
 
 

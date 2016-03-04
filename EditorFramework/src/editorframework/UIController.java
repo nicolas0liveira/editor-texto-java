@@ -147,6 +147,7 @@ public class UIController implements IUIController, ActionListener {
                                 IDocumentController documentController = core.getDocumentController();
                                 documentController.setSerializer(serializer);
                                 IDocument document = documentController.openDocument(nameSelectedFile);
+                                
                                 editor.setDocument(document);
                                 setEditor(editor);
                                 
@@ -165,7 +166,8 @@ public class UIController implements IUIController, ActionListener {
 
         mainFrame.getContentPane().add(view);
         mainFrame.getContentPane().revalidate();
-        mainFrame.getContentPane().repaint();    
+        mainFrame.getContentPane().repaint();
+//        mainFrame.pack();
     }
     
     

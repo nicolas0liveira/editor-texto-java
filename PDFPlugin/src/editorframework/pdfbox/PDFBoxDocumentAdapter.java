@@ -7,34 +7,23 @@ package editorframework.pdfbox;
 
 import editorframework.interfaces.IDocument;
 
-public class OpenTextPDFAdapter extends OpenTextPDF implements IDocument<String>{
-
-    @Override
-    public boolean open(String pdfFilename){
-        try{
-            openPDF(pdfFilename);
-            return true;
-        }
-        catch(Exception e){
-        }
-        return false;
+/**
+ *
+ * @author nicolas
+ */
+public class PDFBoxDocumentAdapter extends PDFBoxDocumentAdaptee /*implements IDocument*/{
+    
+    public boolean open(String fileName){ 
+        return true;
     }
 
-    @Override
+//    @Override
     public boolean close() {
-        //closePDF(fileName);
-        return false;
-    }
-
-    @Override
-    public boolean save() {
-        //savePDF(filename);
-        return false;
-    }
-
-    @Override
-    public String getData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+//    @Override
+    public boolean save() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

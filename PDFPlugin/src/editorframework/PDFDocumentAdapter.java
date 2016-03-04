@@ -5,29 +5,23 @@
  */
 package editorframework;
 
-import editorframework.interfaces.IDocument;
 import editorframework.pdfbox.PDFBoxDocumentAdaptee;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
+
 
 /**
  *
  * @author aluno
  */
-public class PDFDocument implements IDocument<BufferedImage> {
-    
+
+//Esse link tem um exemplo legal do adapter...http://www.programcreek.com/2011/09/java-design-pattern-adapter/
+public class PDFDocumentAdapter extends PDFDocument {
     private PDFBoxDocumentAdaptee adaptee;
    
-    public PDFDocument(){
-        this.adaptee = new PDFBoxDocumentAdaptee();
-    }
-    
-    public PDFDocument(PDFBoxDocumentAdaptee adaptee){
+    public PDFDocumentAdapter(PDFBoxDocumentAdaptee adaptee){
         this.adaptee = adaptee;
     }
     
@@ -48,15 +42,7 @@ public class PDFDocument implements IDocument<BufferedImage> {
         
         return null;
     }
-
-    @Override
-    public boolean close() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean save() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
+    
+    
 }
